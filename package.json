@@ -1,0 +1,36 @@
+{
+  "name": "h5",
+  "version": "0.0.1",
+  "description": "糙、快、猛 h5 解决方案",
+  "main": "index.js",
+  "scripts": {
+    "js": "cat ./libs/head.core.min.js ./libs/vue.min.js ./libs/vue-resource.min.js ./src/ready.js ./src/dispatcher.js | uglifyjs --screw-ie8 --stats --mangle --verbose --compress --output ./dist/h5.min.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hbrls/h5.git"
+  },
+  "keywords": [
+    "html5",
+    "mobile"
+  ],
+  "author": "hbrls",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hbrls/h5/issues"
+  },
+  "homepage": "https://github.com/hbrls/h5",
+  "dependencies": {
+    "vue": "0.12.12",
+    "vue-resource": "0.1.13"
+  },
+  "devDependencies": {
+    "gulp": "3.9.0",
+    "gulp-cssshrink": "^0.1.5",
+    "gulp-minify-css": "^1.2.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-ruby-sass": "^2.0.3",
+    "gulp-shell": "0.4.3",
+    "uglify-js": "2.4.24"
+  }
+}
