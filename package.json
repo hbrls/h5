@@ -1,6 +1,6 @@
 {
   "name": "h5",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "糙、快、猛 h5 解决方案",
   "main": "index.js",
   "scripts": {
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/hbrls/h5",
   "dependencies": {
+    "loaders.css": "^0.1.1",
     "vue": "0.12.12",
     "vue-resource": "0.1.13"
   },

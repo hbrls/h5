@@ -7,89 +7,564 @@
   <meta name="format-detection" content="telephone=no" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <title>H5 Example</title>
+  <title>Menu &amp; Order</title>
   <link rel="stylesheet" href="/css/h5.min.css" />
   <style>
-  .done {
-    text-decoration: line-through;
+  html,
+  body {
+    height: 100%;
+  }
+  body {
+    overflow-y: auto;
+  }
+
+  .Courses {
+    height: 100%;
+    overflow-y: auto;
+  }
+  .Courses-loading {
+    padding-left: 60px;
+    margin: 100px auto;
+    text-align: center;
+  }
+  :root .Courses-loadingBar {
+    background-color: #eee;
+  }
+  .Courses-list {
+    padding-left: 60px;
+  }
+  .Courses-item {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #ccc;
+    margin-bottom: 5px;
+  }
+  .Courses-thumbImg {
+    border: 1px solid #ccc;
+    width: 64px;
+    height: 64px;
+  }
+  .Courses-order {
+    position: absolute;
+    top: 20px;
+    right: 15px;
+  }
+  .Courses-orderAdd--alone {
+    border-radius: 100%;
+  }
+  .Menu {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    border-right: 1px solid #ccc;
+    width: 60px;
+    overflow-y: auto;
+  }
+  .Menu-item {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  .Menu-item.isActive {
+    background-color: #eee;
+  }
+  .Order {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: top 0.5s ease-in-out;
+  }
+  .Order.isActive {
+    top: 0;
+  }
+  .Order-counter {
+    position: absolute;
+    top: -68px;
+    right: 20px;
+    border-radius: 100%;
+    width: 48px;
+    height: 48px;
+    background-color: #ccc;
+    line-height: 48px;
+    text-align: center;
+    font-size: 20px;
+    transition: top 0.5s ease-in-out;
+  }
+  .Order-counter.isActive {
+    top: 0;
+    left: 0;
+    right: 0;
+    border-radius: 0;
+    width: 100%;
+    height: 68px;
+    background-color: transparent;
+    color: transparent;
+  }
+  .Order-inner {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #f2f2f2;
+    overflow-y: auto;
+    transition: top 0.5s ease-in-out;
+  }
+  .Order-inner.isActive {
+    top: 68px;
+  }
+  .Order-draftItem {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #ccc;
+    margin-bottom: 5px;
+  }
+  .Order-confirmedItem {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px dashed #ccc;
+    margin-bottom: 5px;
+  }
+  .Order-thumbImg {
+    border: 1px solid #ccc;
+    width: 48px;
+    height: 48px;
+  }
+  .Order-draftCount,
+  .Order-confirmedCount,
+  .Order-totalCount {
+    margin-top: 10px;
+    text-align: right;
+    font-size: 20px;
+  }
+  .Order-draftAmount,
+  .Order-confirmedAmount,
+  .Order-totalAmount {
+    margin-bottom: 20px;
+    text-align: right;
+    font-size: 28px;
+  }
+  .Order-total {
+    border-top: 1px solid #ccc;
+  }
+  .Order-action {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .Bounce {
+    position: absolute;
+    top: 0;
+    right: 40%;
+    border-radius: 100%;
+    width: 48px;
+    height: 48px;
+    background-color: #8AF7A8;
+  }
+  .bounce-transition {
+    -webkit-transition: all 1s ease-in-out;
+  }
+  .bounce-leave {
+    -webkit-animation: bounce-out .5s;
+  }
+  @-webkit-keyframes bounce-out {
+    0% {
+      -webkit-transform: translateY(0);
+    }
+    50% {
+      -webkit-transform: translateY(-100px);
+    }
+    100% {
+      -webkit-transform: translateY(1000px);
+    }
+  }
+  .Fatal {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 15px;
+    background-color: #fff;
+  }
+  .Fatal-message {
+    text-align: center;
+    font-size: 20px;
+    line-height: 170%;
   }
   </style>
   <script src="/js/h5.min.js"></script>
 </head>
 <body>
-  <div class="container">
-    <div class="row" id="demo">
-      <h1 class="col-xs-12">{{title | uppercase}}</h1>
-      <div class="col-xs-12">
-        <table class="table table-bordered table-striped">
-          <tbody>
-            <tr v-repeat="todos" class="{{done ? 'done' : ''}}">
-              <td class="text-center" v-on="click: done = !done"><input type="checkbox" checked={{done}} /></td>
-              <td>{{content}}</td>
-            </li>
-          </tbody>
-        </table>
-      </div>
-      <div class="col-xs-12">
-        <form class="form-horizontal">
-          <div class="form-group">
-            <div class="col-xs-12">
-              <input class="form-control" name="name" placeholder="姓名" />
-            </div>
+  <div class="container Courses h5-scrolling js-courses" v-cloak>
+    <div class="loader-inner line-scale-pulse-out Courses-loading" v-show="items.length === 0"><div class="Courses-loadingBar"></div><div class="Courses-loadingBar"></div><div class="Courses-loadingBar"></div><div class="Courses-loadingBar"></div><div class="Courses-loadingBar"></div></div>
+    <div class="row Courses-list" v-show="items.length > 0">
+      <div class="col-xs-12 Courses-item" v-repeat="t in items">
+        <div class="media">
+          <div class="media-left" v-show="!t.count">
+            <a href="#">
+              <img class="media-object Courses-thumbImg" v-attr="src: t.thumb">
+            </a>
           </div>
-          <div class="form-group">
-            <div class="col-xs-12">
-              <label class="radio-inline" style="padding-left: 0">
-                性别 :
-              </label>
-              <label class="radio-inline">
-                <input type="radio" name="gender" value="male"> 男
-              </label>
-              <label class="radio-inline">
-                <input type="radio" name="gender" value="female"> 女
-              </label>
+          <div class="media-body">
+            <div class="pull-right Courses-order" v-show="!isLocked">
+              <button type="button" class="btn btn-default Courses-orderAdd--alone" v-show="!t.count" v-on="click: add(t, $event)">+</button>
+              <div class="btn-group" v-show="t.count">
+                <button type="button" class="btn btn-sm btn-default" v-on="click: substract(t)">-</button>
+                <button type="button" class="btn btn-sm btn-default">{{ t.count }}</button>
+                <button type="button" class="btn btn-sm btn-default" v-on="click: add(t, $event)">+</button>
+              </div>
             </div>
+            <!-- substract -->
+            <h4 class="media-heading">{{ t.name }}</h4>
+            <div class="Courses-price">{{ t.price | price }} 元 / 份</div>
           </div>
-          <div class="form-group">
-            <div class="col-xs-6" style="padding-right: 5px">
-              <select class="form-control" name="" id="">
-                <option>选择省份</option>
-              </select>
-            </div>
-            <div class="col-xs-6" style="padding-left: 5px">
-              <select class="form-control" name="" id="">
-                <option>选择城市</option>
-              </select>
-            </div>
-          </div>
-        </form>
+        </div>
       </div>
     </div>
   </div>
+
+  <div class="Menu js-menu" v-cloak>
+    <div class="col-xs-12 Menu-item" v-repeat="t in items" v-class="{isActive: current_menu === t.id}" v-on="click: showMenu(t.id)">{{ t.name }}</div>
+    <div class="col-xs-12 Menu-item" v-class="{isActive: current_menu === 'me'}" v-on="click: showMe">我的</div>
+  </div>
+
+  <div class="Order js-order" v-class="{isActive: isActive}" v-cloak>
+    <div class="Order-counter" v-class="{isActive: isActive}" v-show="count > 0" v-on="click: isActive = !isActive">{{ count }}</div>
+    <div class="container h5-scrolling Order-inner" v-class="{isActive: isActive}">
+      <div class="row">
+        <div class="col-xs-12 Order-draftItem" v-repeat="t in draft">
+          <div class="media">
+            <div class="media-left">
+              <a href="#">
+                <img class="media-object Order-thumbImg" v-attr="src: t.thumb">
+              </a>
+            </div>
+            <div class="media-body">
+              <div class="btn-group pull-right" v-show="t.count">
+                <button type="button" class="btn btn-sm btn-default" v-on="click: update(t, -1)">-</button>
+                <button type="button" class="btn btn-sm btn-default">{{ t.count }}</button>
+                <button type="button" class="btn btn-sm btn-default" v-on="click: update(t, 1)">+</button>
+              </div>
+              <h4 class="media-heading">{{ t.name }}</h4>
+              <div class="Courses-price">{{ t.price | price }} 元 / 份</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" v-show="draftCount > 0">
+        <div class="col-xs-12 Order-draftCount">
+          &times; {{ draftCount }} 件
+        </div>
+        <div class="col-xs-12 Order-draftAmount">
+          {{ draftAmount | price }} 元
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 Order-confirmedItem" v-repeat="t in confirmed">
+          <h5>
+            {{ t.name }}
+            <div class="pull-right">{{ t.price | price }} 元 / 份 &times; {{ t.count }}</div>
+          </h5>
+        </div>
+      </div>
+      <div class="row" v-show="confirmedCount > 0">
+        <div class="col-xs-12 Order-confirmedCount">
+          &times; {{ confirmedCount }} 件
+        </div>
+        <div class="col-xs-12 Order-confirmedAmount">
+          {{ confirmedAmount | price }} 元
+        </div>
+      </div>
+      <div class="row Order-total" v-show="draft.length > 0 && confirmed.length > 0">
+        <div class="col-xs-12 Order-totalCount">
+          &times; {{ count }} 件
+        </div>
+        <div class="col-xs-12 Order-totalAmount">
+          <div class="pull-left">总计：</div>
+          {{ amount | price }} 元
+        </div>
+      </div>
+      <div class="row Order-action">
+        <button type="button" class="btn btn-default" v-on="click: confirm">{{ btnText }}</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="Bounce js-bounce" v-style="top: top + 'px'" v-show="isActive" v-transition="bounce" v-cloak></div>
+
+  <div class="Fatal js-fatal" v-show="isActive" v-cloak>
+    <h1 class="Fatal-message">{{ message }}</h1>
+  </div>
+
+  <!-- LOCKED_TO_OTHER_TABLE -->
+  <!-- <script src="./api/graph_0.js"></script> -->
+  <!-- OCCUPIED_BY_OTHER -->
+  <!-- <script src="./api/graph_1.js"></script> -->
+  <!-- NORMAL -->
+  <script src="./api/graph_2.js"></script>
 
   <script>
   ready(function () {
     Vue.http.options.root = '/api';
 
-    var demo = new Vue({
-      el: '#demo',
+    Vue.filter('price', function (value) {
+      return (value / 100.0).toFixed(2);
+    });
+
+    function _findCurrentMenu() {
+      var current_menu = p_menu.items.filter(function (m) {
+        return m.id === p_menu.current_menu;
+      });
+
+      if (current_menu.length === 1) {
+        return current_menu[0];
+      } else {
+        throw new Error('invalid current menu');
+      }
+    }
+
+    var p_menu = new Vue({
+      el: '.js-menu',
 
       data: {
-        title: 'todos',
-        todos: [],
+        items: GRAPH.menu,
+        current_menu: 'hot',
       },
 
-      ready: function () {
-        var that = this;
+      methods: {
+        showMenu: function (id) {
+          p_menu.current_menu = id;
 
-        this.$http
-          .get('data.json', function (result) {
-            that.todos = result.todos;
-          })
-          .error(function (err) {
-            console.error(err);
+          var current_menu = _findCurrentMenu();
+
+          if (current_menu.items.length === 0) {
+            var endpoint = 'get_menu_' + id + '.json';
+
+            this.$http
+              .get(endpoint, function (result) {
+                setTimeout(function () {
+                  current_menu.items = result;
+                }, 1000); // ** on slow connection
+              })
+              .error(function (err) {
+                console.error(err);
+              });
+          }
+        },
+
+        showMe: function () {
+          throw new Error('NotImplementedError');
+        },
+      },
+    });
+
+    var p_order = new Vue({
+      el: '.js-order',
+
+      data: {
+        draft: GRAPH.table.state === 'SERVING' ? GRAPH.order.draft : [],
+        confirmed: GRAPH.table.state === 'SERVING' ? GRAPH.order.confirmed : [],
+        isActive: false,
+      },
+
+      computed: {
+        draftCount: function () {
+          var sum = 0;
+
+          sum += this.draft.reduce(function (prev, current) {
+            return prev + current.count;
+          }, 0);
+
+          return sum;
+        },
+
+        draftAmount: function () {
+          var sum = 0;
+
+          sum += this.draft.reduce(function (prev, current) {
+            return prev + current.price * current.count;
+          }, 0);
+
+          return sum;
+        },
+
+        confirmedCount: function () {
+          var sum = 0;
+
+          sum += this.confirmed.reduce(function (prev, current) {
+            return prev + current.count;
+          }, 0);
+
+          return sum;
+        },
+
+        confirmedAmount: function () {
+          var sum = 0;
+
+          sum += this.confirmed.reduce(function (prev, current) {
+            return prev + current.price * current.count;
+          }, 0);
+
+          return sum;
+        },
+
+        count: function () {
+          return this.draftCount + this.confirmedCount;
+        },
+
+        amount: function () {
+          return this.draftAmount + this.confirmedAmount;
+        },
+
+        btnText: function () {
+          if (this.draft.length > 0) {
+            if (this.confirmed.length > 0) {
+              return '立即加菜';
+            } else {
+              return '立即下单';
+            }
+          } else {
+            if (this.confirmed.length > 0) {
+              return '去加菜';
+            } else {
+              throw new Fatal('NotImplementedError');
+            }
+          }
+        },
+      },
+
+      methods: {
+        update: function (course, count_delta) {
+          var idx;
+          for (var i = 0; i < this.draft.length; i++) {
+            if (this.draft[i].id === course.id) {
+              idx = i;
+              break;
+            }
+          }
+
+          var item = {
+            id: course.id,
+            name: course.name,
+            thumb: course.thumb,
+            price: course.price,
+          };
+
+          if (idx >= 0) {
+            item.count = this.draft[idx].count + count_delta;
+            if (item.count > 0) {
+              this.draft.$set(idx, item);
+            } else {
+              this.draft.splice(idx, 1);
+            }
+          } else {
+            item.count = count_delta;
+            this.draft.unshift(item);
+          }
+        },
+
+        confirm: function () {
+          if (this.draft.length === 0) {
+            this.isActive = false;
+            return;
+          }
+
+          this.$http
+            .get('confirm_order.json', function (result) {
+              console.log(result.id);
+
+              setTimeout(function () {
+                var draft = p_order.draft.filter(function () { return true; });
+                p_order.confirmed = p_order.confirmed.concat(draft);
+                p_order.draft = [];
+              }, 2000); // ** on slow connection
+            })
+            .error(function (err) {
+              console.error(err);
+            });
+        },
+      },
+    });
+
+    var p_courses = new Vue({
+      // ** depends on p_menu & p_order
+      el: '.js-courses',
+
+      data: {
+        isLocked: GRAPH.table.state === 'OCCUPIED_BY_OTHER',
+      },
+
+      computed: {
+        items: function () {
+          var current_menu = _findCurrentMenu();
+
+          var counts = {};
+          p_order.draft.forEach(function (d) {
+            counts[d.id] = d.count;
           });
-      }
+
+          return current_menu.items.map(function (t) {
+            return {
+              id: t.id,
+              name: t.name,
+              thumb: t.thumb,
+              price: t.price,
+              count: counts[t.id],
+            }
+          });
+        },
+      },
+
+      methods: {
+        add: function (course, event) {
+          p_order.update(course, 1);
+          p_bounce.on(event.clientY);
+        },
+
+        substract: function (course) {
+          p_order.update(course, -1);
+        },
+      },
+    });
+
+    var p_bounce = new Vue({
+      el: '.js-bounce',
+
+      data: {
+        top: 800,
+        isActive: false,
+      },
+
+      methods: {
+        on: function (top) {
+          p_bounce.top = top;
+          p_bounce.isActive = true;
+
+          setTimeout(function () {
+            p_bounce.top = 800;
+            p_bounce.isActive = false;
+          }, 0);
+        },
+      },
+    });
+
+    var p_fatal = new Vue({
+      el: '.js-fatal',
+
+      data: {
+        isActive: GRAPH.me.state === 'LOCKED_TO_OTHER_TABLE',
+      },
+
+      computed: {
+        message: function () {
+          if (GRAPH.me.state === 'LOCKED_TO_OTHER_TABLE') {
+            return '您已经开了其它桌台，如需换位置，请联系服务员。';
+          }
+        },
+      },
     });
   });
   </script>

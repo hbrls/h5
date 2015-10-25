@@ -1,5 +1,11 @@
 @import '../libs/bootstrap.xs.min.css';
+@import './bootstrap.enhance.scss';
+@import './loading.scss';
 
 [v-cloak] {
   display: none;
+}
+
+.h5-scrolling {
+  -webkit-overflow-scrolling: touch;
 }
