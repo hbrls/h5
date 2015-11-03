@@ -11,7 +11,8 @@ gulp.task('libs', shell.task([
   'rm -f ./libs/*.js',
   'cp node_modules/vue/dist/vue.min.js ./libs',
   'cp node_modules/vue-resource/dist/vue-resource.min.js ./libs',
-  'wget https://raw.githubusercontent.com/headjs/headjs/master/dist/1.0.0/head.core.min.js -P ./libs',
+  'cp node_modules/headjs/dist/1.0.0/head.core.min.js ./libs',
+  'cp node_modules/director/build/director.min.js ./libs && echo ";" >> ./libs/director.min.js',
   'wget https://raw.githubusercontent.com/hbrls/bootstrap/xs/dist/css/bootstrap.xs.min.css -P ./libs',
 ]));
 
