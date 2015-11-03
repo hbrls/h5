@@ -8,5 +8,5 @@
     }
   }
 
-  window.ready = ready;
+  window._ready = ready;
 }());
