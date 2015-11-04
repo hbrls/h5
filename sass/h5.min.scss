@@ -6,6 +6,7 @@
   display: none;
 }
 
+// http://patrickmuff.ch/blog/2014/10/01/how-we-fixed-the-webkit-overflow-scrolling-touch-bug-on-ios/
 .h5-scrolling {
   -webkit-overflow-scrolling: touch;
 }

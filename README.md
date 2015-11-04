@@ -12,8 +12,8 @@ Docs
 
 2. `Vue` is https://github.com/vuejs/vue, https://github.com/vuejs/vue-resource
 
-3. `Router` is https://github.com/flatiron/director
+3. `_ready`, `_extend` are from http://youmightnotneedjquery.com/
 
-4. `_ready`, `_extend` are from http://youmightnotneedjquery.com/
+4. `h5v` is an empty Vue instance for $on, $emit, $http and more.
 
-5. `h5v` is an empty Vue instance for $on, $emit, $http and more.
+5. `h5r` is am empty `new Router()` from https://github.com/flatiron/director
