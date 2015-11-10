@@ -1,10 +1,10 @@
 {
   "name": "h5",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "糙、快、猛 h5 解决方案",
   "main": "index.js",
   "scripts": {
-    "js": "cat ./libs/head.core.min.js ./libs/vue.min.js ./libs/vue-resource.min.js ./libs/director.min.js ./src/ready.js ./src/extend.js ./src/h5.js | uglifyjs --screw-ie8 --stats --mangle --verbose --compress --output ./dist/h5.min.js"
+    "js": "cat ./libs/head.core.min.js ./libs/vue.min.js ./libs/vue-resource.min.js ./libs/director.min.js ./src/ready.js ./src/h5.js | uglifyjs --screw-ie8 --stats --mangle --verbose --compress --output ./dist/h5.min.js"
   },
   "repository": {
     "type": "git",

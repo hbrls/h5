@@ -12,7 +12,7 @@ Docs
 
 2. `Vue` is https://github.com/vuejs/vue, https://github.com/vuejs/vue-resource
 
-3. `_ready`, `_extend` are from http://youmightnotneedjquery.com/
+3. `_ready` is from http://youmightnotneedjquery.com/
 
 4. `h5v` is an empty Vue instance for $on, $emit, $http and more.
 
