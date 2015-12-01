@@ -9,6 +9,7 @@ var rename = require('gulp-rename');
 
 gulp.task('libs', shell.task([
   'rm -f ./libs/*.js',
+  'cp node_modules/vue/dist/vue.js ./libs',
   'cp node_modules/vue/dist/vue.min.js ./libs',
   'cp node_modules/vue-resource/dist/vue-resource.min.js ./libs',
   'cp node_modules/headjs/dist/1.0.0/head.core.min.js ./libs',
@@ -18,7 +19,8 @@ gulp.task('libs', shell.task([
 
 
 gulp.task('js', shell.task([
-  'npm run -s js',
+  'npm run -s js-debug',
+  'npm run -s js-prod',
 ]));
 
 
@@ -38,11 +40,12 @@ gulp.task('css', function () {
 gulp.task('build', ['js', 'css'], function () {
   return gulp
     .src([
+      'dist/h5.debug.js',
       'dist/h5.min.css',
       'dist/h5.min.js',
     ])
     .pipe(rename(function (path) {
-      path.basename = path.basename.replace('.min', '-' + pkg.version + '.min');
+      path.basename = path.basename.replace('h5', 'h5-' + pkg.version);
       return path;
     }))
     .pipe(gulp.dest('dist'));

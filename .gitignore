@@ -27,5 +27,6 @@ build/Release
 node_modules
 
 
+dist/h5.debug.js
 dist/h5.min.css
 dist/h5.min.js
