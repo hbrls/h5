@@ -14,7 +14,7 @@ gulp.task('libs', shell.task([
   'cp node_modules/vue-resource/dist/vue-resource.min.js ./libs',
   'cp node_modules/headjs/dist/1.0.0/head.core.min.js ./libs',
   'cp node_modules/director/build/director.min.js ./libs && echo ";" >> ./libs/director.min.js',
-  'wget https://raw.githubusercontent.com/hbrls/bootstrap/xs/dist/css/bootstrap.xs.min.css -P ./libs',
+  'wget https://raw.githubusercontent.com/hbrls/bootstrap/xs/dist/css/bootstrap.xs.0.0.1.min.css -P ./libs',
 ]));
 
 
@@ -56,3 +56,6 @@ gulp.task('example', shell.task([
   'cp ./dist/h5.min.js ./example/js/',
   'cp ./dist/h5.min.css ./example/css/',
 ]));
+
+
+gulp.task('default', ['build']);
