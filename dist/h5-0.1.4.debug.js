@@ -1,9 +1,5 @@
-/*! head.core - v1.0.2 */
-(function(n,t){"use strict";function r(n){a[a.length]=n}function k(n){var t=new RegExp(" ?\\b"+n+"\\b");c.className=c.className.replace(t,"")}function p(n,t){for(var i=0,r=n.length;i<r;i++)t.call(n,n[i],i)}function tt(){var t,e,f,o;c.className=c.className.replace(/ (w-|eq-|gt-|gte-|lt-|lte-|portrait|no-portrait|landscape|no-landscape)\d+/g,"");t=n.innerWidth||c.clientWidth;e=n.outerWidth||n.screen.width;u.screen.innerWidth=t;u.screen.outerWidth=e;r("w-"+t);p(i.screens,function(n){t>n?(i.screensCss.gt&&r("gt-"+n),i.screensCss.gte&&r("gte-"+n)):t<n?(i.screensCss.lt&&r("lt-"+n),i.screensCss.lte&&r("lte-"+n)):t===n&&(i.screensCss.lte&&r("lte-"+n),i.screensCss.eq&&r("e-q"+n),i.screensCss.gte&&r("gte-"+n))});f=n.innerHeight||c.clientHeight;o=n.outerHeight||n.screen.height;u.screen.innerHeight=f;u.screen.outerHeight=o;u.feature("portrait",f>t);u.feature("landscape",f<t)}function it(){n.clearTimeout(b);b=n.setTimeout(tt,50)}var y=n.document,rt=n.navigator,ut=n.location,c=y.documentElement,a=[],i={screens:[240,320,480,640,768,800,1024,1280,1440,1680,1920],screensCss:{gt:!0,gte:!1,lt:!0,lte:!1,eq:!1},browsers:[{ie:{min:6,max:11}}],browserCss:{gt:!0,gte:!1,lt:!0,lte:!1,eq:!0},html5:!0,page:"-page",section:"-section",head:"head"},v,u,s,w,o,h,l,d,f,g,nt,e,b;if(n.head_conf)for(v in n.head_conf)n.head_conf[v]!==t&&(i[v]=n.head_conf[v]);u=n[i.head]=function(){u.ready.apply(null,arguments)};u.feature=function(n,t,i){return n?(Object.prototype.toString.call(t)==="[object Function]"&&(t=t.call()),r((t?"":"no-")+n),u[n]=!!t,i||(k("no-"+n),k(n),u.feature()),u):(c.className+=" "+a.join(" "),a=[],u)};u.feature("js",!0);s=rt.userAgent.toLowerCase();w=/mobile|android|kindle|silk|midp|phone|(windows .+arm|touch)/.test(s);u.feature("mobile",w,!0);u.feature("desktop",!w,!0);s=/(chrome|firefox)[ \/]([\w.]+)/.exec(s)||/(iphone|ipad|ipod)(?:.*version)?[ \/]([\w.]+)/.exec(s)||/(android)(?:.*version)?[ \/]([\w.]+)/.exec(s)||/(webkit|opera)(?:.*version)?[ \/]([\w.]+)/.exec(s)||/(msie) ([\w.]+)/.exec(s)||/(trident).+rv:(\w.)+/.exec(s)||[];o=s[1];h=parseFloat(s[2]);switch(o){case"msie":case"trident":o="ie";h=y.documentMode||h;break;case"firefox":o="ff";break;case"ipod":case"ipad":case"iphone":o="ios";break;case"webkit":o="safari"}for(u.browser={name:o,version:h},u.browser[o]=!0,l=0,d=i.browsers.length;l<d;l++)for(f in i.browsers[l])if(o===f)for(r(f),g=i.browsers[l][f].min,nt=i.browsers[l][f].max,e=g;e<=nt;e++)h>e?(i.browserCss.gt&&r("gt-"+f+e),i.browserCss.gte&&r("gte-"+f+e)):h<e?(i.browserCss.lt&&r("lt-"+f+e),i.browserCss.lte&&r("lte-"+f+e)):h===e&&(i.browserCss.lte&&r("lte-"+f+e),i.browserCss.eq&&r("eq-"+f+e),i.browserCss.gte&&r("gte-"+f+e));else r("no-"+f);r(o);r(o+parseInt(h,10));i.html5&&o==="ie"&&h<9&&p("abbr|article|aside|audio|canvas|details|figcaption|figure|footer|header|hgroup|main|mark|meter|nav|output|progress|section|summary|time|video".split("|"),function(n){y.createElement(n)});p(ut.pathname.split("/"),function(n,u){if(this.length>2&&this[u+1]!==t)u&&r(this.slice(u,u+1).join("-").toLowerCase()+i.section);else{var f=n||"index",e=f.indexOf(".");e>0&&(f=f.substring(0,e));c.id=f.toLowerCase()+i.page;u||r("root"+i.section)}});u.screen={height:n.screen.height,width:n.screen.width};tt();b=0;n.addEventListener?n.addEventListener("resize",it,!1):n.attachEvent("onresize",it)})(window);
-/*
-//# sourceMappingURL=head.core.min.js.map
-*//*!
- * Vue.js v1.0.15
+!function(e,t){"use strict";function i(e){d[d.length]=e}function n(e){var t=new RegExp(" ?\\b"+e+"\\b");h.className=h.className.replace(t,"")}function s(e,t){for(var i=0,n=e.length;n>i;i++)t.call(e,e[i],i)}function r(){h.className=h.className.replace(/ (w-|eq-|gt-|gte-|lt-|lte-|portrait|no-portrait|landscape|no-landscape)\d+/g,"");var t=e.innerWidth||h.clientWidth,n=e.outerWidth||e.screen.width;p.screen.innerWidth=t,p.screen.outerWidth=n,i("w-"+t),s(l.screens,function(e){t>e?(l.screensCss.gt&&i("gt-"+e),l.screensCss.gte&&i("gte-"+e)):e>t?(l.screensCss.lt&&i("lt-"+e),l.screensCss.lte&&i("lte-"+e)):t===e&&(l.screensCss.lte&&i("lte-"+e),l.screensCss.eq&&i("e-q"+e),l.screensCss.gte&&i("gte-"+e))});var r=e.innerHeight||h.clientHeight,o=e.outerHeight||e.screen.height;p.screen.innerHeight=r,p.screen.outerHeight=o,p.feature("portrait",r>t),p.feature("landscape",t>r)}function o(){e.clearTimeout(u),u=e.setTimeout(r,50)}var a=e.document,c=(e.navigator,e.location),h=a.documentElement,d=[],l={screens:[240,320,480,640,768,800,1024,1280,1440,1680,1920],screensCss:{gt:!0,gte:!1,lt:!0,lte:!1,eq:!1},browsers:[{ie:{min:6,max:11}}],browserCss:{gt:!0,gte:!1,lt:!0,lte:!1,eq:!0},html5:!0,page:"-page",section:"-section",head:"head"};if(e.head_conf)for(var b in e.head_conf)e.head_conf[b]!==t&&(l[b]=e.head_conf[b]);var p=e[l.head]=function(){p.ready.apply(null,arguments)};p.feature=function(e,t,s){return e?("[object Function]"===Object.prototype.toString.call(t)&&(t=t.call()),i((t?"":"no-")+e),p[e]=!!t,s||(n("no-"+e),n(e),p.feature()),p):(h.className+=" "+d.join(" "),d=[],p)},p.feature("js",!0),s(c.pathname.split("/"),function(e,n){if(this.length>2&&this[n+1]!==t)n&&i(this.slice(n,n+1).join("-").toLowerCase()+l.section);else{var s=e||"index",r=s.indexOf(".");r>0&&(s=s.substring(0,r)),h.id=s.toLowerCase()+l.page,n||i("root"+l.section)}}),p.screen={height:e.screen.height,width:e.screen.width},r();var u=0;e.addEventListener?e.addEventListener("resize",o,!1):e.attachEvent("onresize",o)}(window),function(){var e=/iPhone/i,t=/iPod/i,i=/iPad/i,n=/(?=.*\bAndroid\b)(?=.*\bMobile\b)/i,s=/Android/i,r=/(?=.*\bAndroid\b)(?=.*\bSD4930UR\b)/i,o=/(?=.*\bAndroid\b)(?=.*\b(?:KFOT|KFTT|KFJWI|KFJWA|KFSOWI|KFTHWI|KFTHWA|KFAPWI|KFAPWA|KFARWI|KFASWI|KFSAWI|KFSAWA)\b)/i,a=/IEMobile/i,c=/(?=.*\bWindows\b)(?=.*\bARM\b)/i,h=/BlackBerry/i,d=/BB10/i,l=/Opera Mini/i,b=/(CriOS|Chrome)(?=.*\bMobile\b)/i,p=/(?=.*\bFirefox\b)(?=.*\bMobile\b)/i,u=new RegExp("(?:Nexus 7|BNTV250|Kindle Fire|Silk|GT-P1000)","i"),f=function(e,t){return e.test(t)},g=function(g){var v=g||navigator.userAgent,w=v.split("[FBAN");return"undefined"!=typeof w[1]&&(v=w[0]),this.apple={phone:f(e,v),ipod:f(t,v),tablet:!f(e,v)&&f(i,v),device:f(e,v)||f(t,v)||f(i,v)},this.amazon={phone:f(r,v),tablet:!f(r,v)&&f(o,v),device:f(r,v)||f(o,v)},this.android={phone:f(r,v)||f(n,v),tablet:!f(r,v)&&!f(n,v)&&(f(o,v)||f(s,v)),device:f(r,v)||f(o,v)||f(n,v)||f(s,v)},this.windows={phone:f(a,v),tablet:f(c,v),device:f(a,v)||f(c,v)},this.other={blackberry:f(h,v),blackberry10:f(d,v),opera:f(l,v),firefox:f(p,v),chrome:f(b,v),device:f(h,v)||f(d,v)||f(l,v)||f(p,v)||f(b,v)},this.seven_inch=f(u,v),this.mobile=this.apple.device||this.android.device||this.windows.device||this.other.device||this.seven_inch,this.phone=this.apple.phone||this.android.phone||this.windows.phone,this.tablet=this.apple.tablet||this.android.tablet||this.windows.tablet,this.qqx5=/MQQBrowser/i.test(v),"undefined"==typeof window?this:void 0},v=function(){var e=new g;return e.Class=g,e};head.browser=v()}(this);/*!
+ * Vue.js v1.0.16
  * (c) 2016 Evan You
  * Released under the MIT License.
  */
@@ -87,7 +83,7 @@
    * @return {Boolean}
    */
 
-  var literalValueRE = /^\s?(true|false|[\d\.]+|'[^']*'|"[^"]*")\s?$/;
+  var literalValueRE = /^\s?(true|false|-?[\d\.]+|'[^']*'|"[^"]*")\s?$/;
 
   function isLiteral(exp) {
     return literalValueRE.test(exp);
@@ -397,6 +393,8 @@
   // Browser environment sniffing
   var inBrowser = typeof window !== 'undefined' && Object.prototype.toString.call(window) !== '[object Object]';
 
+  var devtools = inBrowser && window.__VUE_DEVTOOLS_GLOBAL_HOOK__;
+
   var isIE9 = inBrowser && navigator.userAgent.toLowerCase().indexOf('msie 9.0') > 0;
 
   var isAndroid = inBrowser && navigator.userAgent.toLowerCase().indexOf('android') > 0;
@@ -438,6 +436,7 @@
         copies[i]();
       }
     }
+
     /* istanbul ignore if */
     if (typeof MutationObserver !== 'undefined') {
       var counter = 1;
@@ -451,7 +450,11 @@
         textNode.data = counter;
       };
     } else {
-      timerFunc = setTimeout;
+      // webpack attempts to inject a shim for setImmediate
+      // if it is used as a global, so we have to work around that to
+      // avoid bundling unnecessary code.
+      var context = inBrowser ? window : typeof global !== 'undefined' ? global : {};
+      timerFunc = context.setImmediate || setTimeout;
     }
     return function (cb, ctx) {
       var func = ctx ? function () {
@@ -1224,10 +1227,11 @@
    * @param {Element} el
    * @param {String} event
    * @param {Function} cb
+   * @param {Boolean} [useCapture]
    */
 
-  function on$1(el, event, cb) {
-    el.addEventListener(event, cb);
+  function on$1(el, event, cb, useCapture) {
+    el.addEventListener(event, cb, useCapture);
   }
 
   /**
@@ -1331,20 +1335,26 @@
   }
 
   /**
-   * Trim possible empty head/tail textNodes inside a parent.
+   * Trim possible empty head/tail text and comment
+   * nodes inside a parent.
    *
    * @param {Node} node
    */
 
   function trimNode(node) {
-    trim(node, node.firstChild);
-    trim(node, node.lastChild);
+    var child;
+    /* eslint-disable no-sequences */
+    while ((child = node.firstChild, isTrimmable(child))) {
+      node.removeChild(child);
+    }
+    while ((child = node.lastChild, isTrimmable(child))) {
+      node.removeChild(child);
+    }
+    /* eslint-enable no-sequences */
   }
 
-  function trim(parent, node) {
-    if (node && node.nodeType === 3 && !node.data.trim()) {
-      parent.removeChild(node);
-    }
+  function isTrimmable(node) {
+    return node && (node.nodeType === 3 && !node.data.trim() || node.nodeType === 8);
   }
 
   /**
@@ -1481,7 +1491,7 @@
           // Chrome returns unknown for several HTML5 elements.
           // https://code.google.com/p/chromium/issues/detail?id=540526
           !/^(data|time|rtc|rb)$/.test(tag)) {
-            warn('Unknown custom element: <' + tag + '> - did you ' + 'register the component correctly?');
+            warn('Unknown custom element: <' + tag + '> - did you ' + 'register the component correctly? For recursive components, ' + 'make sure to provide the "name" option.');
           }
         }
       }
@@ -1899,6 +1909,10 @@
    */
 
   function resolveAsset(options, type, id) {
+    /* istanbul ignore if */
+    if (typeof id !== 'string') {
+      return;
+    }
     var assets = options[type];
     var camelizedId;
     return assets[id] ||
@@ -2278,6 +2292,7 @@
   	isArray: isArray,
   	hasProto: hasProto,
   	inBrowser: inBrowser,
+  	devtools: devtools,
   	isIE9: isIE9,
   	isAndroid: isAndroid,
   	get transitionProp () { return transitionProp; },
@@ -2364,7 +2379,7 @@
       this._fragmentEnd = null; // @type {Text|Comment}
 
       // lifecycle state
-      this._isCompiled = this._isDestroyed = this._isReady = this._isAttached = this._isBeingDestroyed = false;
+      this._isCompiled = this._isDestroyed = this._isReady = this._isAttached = this._isBeingDestroyed = this._vForRemoving = false;
       this._unlinkFn = null;
 
       // context:
@@ -2392,6 +2407,13 @@
       // push self into parent / transclusion host
       if (this.$parent) {
         this.$parent.$children.push(this);
+      }
+
+      // save raw constructor data before merge
+      // so that we know which properties are provided at
+      // instantiation.
+      if ('development' !== 'production') {
+        this._runtimeData = options.data;
       }
 
       // merge options.
@@ -2979,10 +3001,8 @@
     runBatcherQueue(userQueue);
     // dev tool hook
     /* istanbul ignore if */
-    if ('development' !== 'production') {
-      if (inBrowser && window.__VUE_DEVTOOLS_GLOBAL_HOOK__) {
-        window.__VUE_DEVTOOLS_GLOBAL_HOOK__.emit('flush');
-      }
+    if (devtools) {
+      devtools.emit('flush');
     }
     resetBatcherState();
   }
@@ -3307,9 +3327,10 @@
   Watcher.prototype.teardown = function () {
     if (this.active) {
       // remove self from vm's watcher list
-      // we can skip this if the vm if being destroyed
-      // which can improve teardown performance.
-      if (!this.vm._isBeingDestroyed) {
+      // this is a somewhat expensive operation so we skip it
+      // if the vm is being destroyed or is performing a v-for
+      // re-render (the watcher list is then filtered by v-for).
+      if (!this.vm._isBeingDestroyed && !this.vm._vForRemoving) {
         this.vm._watchers.$remove(this);
       }
       var depIds = Object.keys(this.deps);
@@ -3487,9 +3508,6 @@
     if (!testEl) {
       testEl = document.createElement('div');
     }
-    if (camel in testEl.style) {
-      return prop;
-    }
     var i = prefixes.length;
     var prefixed;
     while (i--) {
@@ -3497,6 +3515,9 @@
       if (prefixed in testEl.style) {
         return prefixes[i] + prop;
       }
+    }
+    if (camel in testEl.style) {
+      return prop;
     }
   }
 
@@ -3579,6 +3600,9 @@
     handleSingle: function handleSingle(attr, value) {
       var el = this.el;
       var interp = this.descriptor.interp;
+      if (this.modifiers.camel) {
+        attr = camelize(attr);
+      }
       if (!interp && attrWithPropsRE.test(attr) && attr in el) {
         el[attr] = attr === 'value' ? value == null // IE9 will set input.value to "null" for null...
         ? '' : value : value;
@@ -3608,9 +3632,9 @@
           }
           setClass(el, value);
         } else if (xlinkRE.test(attr)) {
-          el.setAttributeNS(xlinkNS, attr, value);
+          el.setAttributeNS(xlinkNS, attr, value === true ? '' : value);
         } else {
-          el.setAttribute(attr, value);
+          el.setAttribute(attr, value === true ? '' : value);
         }
       } else {
         el.removeAttribute(attr);
@@ -3624,7 +3648,7 @@
     tab: 9,
     enter: 13,
     space: 32,
-    'delete': 46,
+    'delete': [8, 46],
     up: 38,
     left: 37,
     right: 39,
@@ -3645,6 +3669,7 @@
       }
       return keyCodes[key];
     });
+    codes = [].concat.apply([], codes);
     return function keyHandler(e) {
       if (codes.indexOf(e.keyCode) > -1) {
         return handler.call(this, e);
@@ -3666,6 +3691,14 @@
     };
   }
 
+  function selfFilter(handler) {
+    return function selfHandler(e) {
+      if (e.target === e.currentTarget) {
+        return handler.call(this, e);
+      }
+    };
+  }
+
   var on = {
 
     acceptStatement: true,
@@ -3676,7 +3709,7 @@
       if (this.el.tagName === 'IFRAME' && this.arg !== 'load') {
         var self = this;
         this.iframeBind = function () {
-          on$1(self.el.contentWindow, self.arg, self.handler);
+          on$1(self.el.contentWindow, self.arg, self.handler, self.modifiers.capture);
         };
         this.on('load', this.iframeBind);
       }
@@ -3701,6 +3734,9 @@
       if (this.modifiers.prevent) {
         handler = preventFilter(handler);
       }
+      if (this.modifiers.self) {
+        handler = selfFilter(handler);
+      }
       // key filter
       var keys = Object.keys(this.modifiers).filter(function (key) {
         return key !== 'stop' && key !== 'prevent';
@@ -3715,7 +3751,7 @@
       if (this.iframeBind) {
         this.iframeBind();
       } else {
-        on$1(this.el, this.arg, this.handler);
+        on$1(this.el, this.arg, this.handler, this.modifiers.capture);
       }
     },
 
@@ -4009,9 +4045,10 @@
       // jQuery variable in tests.
       this.hasjQuery = typeof jQuery === 'function';
       if (this.hasjQuery) {
-        jQuery(el).on('change', this.listener);
+        var method = jQuery.fn.on ? 'on' : 'bind';
+        jQuery(el)[method]('change', this.listener);
         if (!lazy) {
-          jQuery(el).on('input', this.listener);
+          jQuery(el)[method]('input', this.listener);
         }
       } else {
         this.on('change', this.listener);
@@ -4045,8 +4082,9 @@
     unbind: function unbind() {
       var el = this.el;
       if (this.hasjQuery) {
-        jQuery(el).off('change', this.listener);
-        jQuery(el).off('input', this.listener);
+        var method = jQuery.fn.off ? 'off' : 'unbind';
+        jQuery(el)[method]('change', this.listener);
+        jQuery(el)[method]('input', this.listener);
       }
     }
   };
@@ -4200,7 +4238,8 @@
 
   function stringToFragment(templateString, raw) {
     // try a cache hit first
-    var hit = templateCache.get(templateString);
+    var cacheKey = raw ? templateString : templateString.trim();
+    var hit = templateCache.get(cacheKey);
     if (hit) {
       return hit;
     }
@@ -4221,8 +4260,7 @@
       var suffix = wrap[2];
       var node = document.createElement('div');
 
-      var templateStringToUse = raw ? templateString : templateString.trim();
-      node.innerHTML = prefix + templateStringToUse + suffix;
+      node.innerHTML = prefix + templateString + suffix;
       while (depth--) {
         node = node.lastChild;
       }
@@ -4234,8 +4272,10 @@
         frag.appendChild(child);
       }
     }
-
-    templateCache.put(templateString, frag);
+    if (!raw) {
+      trimNode(frag);
+    }
+    templateCache.put(cacheKey, frag);
     return frag;
   }
 
@@ -4701,6 +4741,9 @@
       if (this.frag) {
         this.frag.destroy();
       }
+      if (this.elseFrag) {
+        this.elseFrag.destroy();
+      }
     }
   };
 
@@ -4841,6 +4884,10 @@
       // from cache)
       var removalIndex = 0;
       var totalRemoved = oldFrags.length - frags.length;
+      // when removing a large number of fragments, watcher removal
+      // turns out to be a perf bottleneck, so we batch the watcher
+      // removals into a single filter call!
+      this.vm._vForRemoving = true;
       for (i = 0, l = oldFrags.length; i < l; i++) {
         frag = oldFrags[i];
         if (!frag.reused) {
@@ -4848,6 +4895,10 @@
           this.remove(frag, removalIndex++, totalRemoved, inDocument);
         }
       }
+      this.vm._vForRemoving = false;
+      this.vm._watchers = this.vm._watchers.filter(function (w) {
+        return w.active;
+      });
 
       // Final pass, move/insert new fragments into the
       // right place.
@@ -5178,7 +5229,7 @@
         }
         return res;
       } else {
-        if (typeof value === 'number') {
+        if (typeof value === 'number' && !isNaN(value)) {
           value = range(value);
         }
         return value || [];
@@ -5258,7 +5309,7 @@
 
   function range(n) {
     var i = -1;
-    var ret = new Array(n);
+    var ret = new Array(Math.floor(n));
     while (++i < n) {
       ret[i] = i;
     }
@@ -6377,7 +6428,7 @@
   // special binding prefixes
   var bindRE = /^v-bind:|^:/;
   var onRE = /^v-on:|^@/;
-  var argRE = /:(.*)$/;
+  var dirAttrRE = /^v-([^:]+)(?:$|:(.*)$)/;
   var modifierRE = /\.[^\.]+/g;
   var transitionRE = /^(v-bind:|:)?transition$/;
 
@@ -6444,6 +6495,8 @@
    */
 
   function linkAndCapture(linker, vm) {
+    /* istanbul ignore if */
+    if ('development' === 'production') {}
     var originalDirCount = vm._directives.length;
     linker();
     var dirs = vm._directives.slice(originalDirCount);
@@ -6506,7 +6559,7 @@
     var i = dirs.length;
     while (i--) {
       dirs[i]._teardown();
-      if (!destroying) {
+      if ('development' !== 'production' && !destroying) {
         vm._directives.$remove(dirs[i]);
       }
     }
@@ -6539,7 +6592,6 @@
    *
    * If this is a fragment instance, we only need to compile 1.
    *
-   * @param {Vue} vm
    * @param {Element} el
    * @param {Object} options
    * @param {Object} contextOptions
@@ -6974,7 +7026,7 @@
   function compileDirectives(attrs, options) {
     var i = attrs.length;
     var dirs = [];
-    var attr, name, value, rawName, rawValue, dirName, arg, modifiers, dirDef, tokens;
+    var attr, name, value, rawName, rawValue, dirName, arg, modifiers, dirDef, tokens, matched;
     while (i--) {
       attr = attrs[i];
       name = rawName = attr.name;
@@ -7025,14 +7077,9 @@
             } else
 
               // normal directives
-              if (name.indexOf('v-') === 0) {
-                // check arg
-                arg = (arg = name.match(argRE)) && arg[1];
-                if (arg) {
-                  name = name.replace(argRE, '');
-                }
-                // extract directive name
-                dirName = name.slice(2);
+              if (matched = name.match(dirAttrRE)) {
+                dirName = matched[1];
+                arg = matched[2];
 
                 // skip v-else (when used with v-show)
                 if (dirName === 'else') {
@@ -7340,10 +7387,15 @@
       var propsData = this._data;
       var optionsDataFn = this.$options.data;
       var optionsData = optionsDataFn && optionsDataFn();
+      var runtimeData;
+      if ('development' !== 'production') {
+        runtimeData = (typeof this._runtimeData === 'function' ? this._runtimeData() : this._runtimeData) || {};
+        this._runtimeData = null;
+      }
       if (optionsData) {
         this._data = optionsData;
         for (var prop in propsData) {
-          if ('development' !== 'production' && hasOwn(optionsData, prop)) {
+          if ('development' !== 'production' && hasOwn(optionsData, prop) && !hasOwn(runtimeData, prop)) {
             warn('Data field "' + prop + '" is already defined ' + 'as a prop. Use prop default value instead.');
           }
           if (this._props[prop].raw !== null || !hasOwn(optionsData, prop)) {
@@ -7936,10 +7988,11 @@
    *
    * @param {String} event
    * @param {Function} handler
+   * @param {Boolean} [useCapture]
    */
 
-  Directive.prototype.on = function (event, handler) {
-    on$1(this.el, event, handler);(this._listeners || (this._listeners = [])).push([event, handler]);
+  Directive.prototype.on = function (event, handler, useCapture) {
+    on$1(this.el, event, handler, useCapture);(this._listeners || (this._listeners = [])).push([event, handler]);
   };
 
   /**
@@ -8009,7 +8062,6 @@
      * Otherwise we need to call transclude/compile/link here.
      *
      * @param {Element} el
-     * @return {Element}
      */
 
     Vue.prototype._compile = function (el) {
@@ -8067,7 +8119,6 @@
 
       this._isCompiled = true;
       this._callHook('compiled');
-      return el;
     };
 
     /**
@@ -8367,8 +8418,8 @@
       }
       var name = extendOptions.name || Super.options.name;
       if ('development' !== 'production') {
-        if (!/^[a-zA-Z][\w-]+$/.test(name)) {
-          warn('Invalid component name: ' + name);
+        if (!/^[a-zA-Z][\w-]*$/.test(name)) {
+          warn('Invalid component name: "' + name + '". Component names ' + 'can only contain alphanumeric characaters and the hyphen.');
           name = null;
         }
       }
@@ -9429,6 +9480,14 @@
 
     compile: function compile(content, context, host) {
       if (content && context) {
+        if (this.el.hasChildNodes() && content.childNodes.length === 1 && content.childNodes[0].nodeType === 1 && content.childNodes[0].hasAttribute('v-if')) {
+          // if the inserted slot has v-if
+          // inject fallback content as the v-else
+          var elseBlock = document.createElement('template');
+          elseBlock.setAttribute('v-else', '');
+          elseBlock.innerHTML = this.el.innerHTML;
+          content.appendChild(elseBlock);
+        }
         var scope = host ? host._scope : this._scope;
         this.unlink = context.$compile(content, host, scope, this._frag);
       }
@@ -9498,7 +9557,7 @@
     partial: partial
   };
 
-  Vue.version = '1.0.15';
+  Vue.version = '1.0.16';
 
   /**
    * Vue and every constructor that extends Vue has an
@@ -9520,13 +9579,11 @@
   };
 
   // devtools global hook
-  /* istanbul ignore if */
-  if ('development' !== 'production' && inBrowser) {
-    if (window.__VUE_DEVTOOLS_GLOBAL_HOOK__) {
-      window.__VUE_DEVTOOLS_GLOBAL_HOOK__.emit('init', Vue);
-    } else if (/Chrome\/\d+/.test(navigator.userAgent)) {
-      console.log('Download the Vue Devtools for a better development experience:\n' + 'https://github.com/vuejs/vue-devtools');
-    }
+  /* istanbul ignore next */
+  if (devtools) {
+    devtools.emit('init', Vue);
+  } else if ('development' !== 'production' && inBrowser && /Chrome\/\d+/.test(navigator.userAgent)) {
+    console.log('Download the Vue Devtools for a better development experience:\n' + 'https://github.com/vuejs/vue-devtools');
   }
 
   return Vue;
