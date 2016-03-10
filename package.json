@@ -1,6 +1,6 @@
 {
   "name": "h5",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "糙、快、猛 h5 解决方案",
   "main": "index.js",
   "scripts": {

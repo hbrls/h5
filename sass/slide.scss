@@ -1,0 +1,43 @@
+/* http://ued.ctrip.com/blog/webapp-horizontal-sliding-mode-based-on-css3-evolution.html */
+.h5-slide {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+.h5-slide-view {
+  width: 100%;
+  height: 100%;
+}
+
+.h5-slide-view {
+  position: relative;
+  overflow: hidden;
+}
+
+.h5-slide-page {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+  transition: transform 400ms cubic-bezier(0.42, 0, 0.58, 1) 0.1s;
+}
+
+.h5-slide-prev {
+  transform: translateX(-100%);
+}
+
+.h5-slide-current {
+  transform: translateX(0);
+}
+
+.h5-slide-next {
+  transform: translateX(100%);
+}

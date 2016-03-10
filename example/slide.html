@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset='utf-8'>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>H5 Slide Example</title>
+  <link rel="stylesheet" href="/css/h5.min.css" />
+  <style>
+  #A {
+    background-color: #f00;
+  }
+  #B {
+    background-color: #0f0;
+  }
+  #C {
+    background-color: #00f;
+  }
+  </style>
+  <script src="/js/h5.min.js"></script>
+</head>
+<body>
+  <div class="h5-slide">
+    <div class="h5-slide-view js-app">
+      <div id="A" class="h5-slide-page" :class="cx0" @click="slideTo(1)">A</div>
+      <div id="B" class="h5-slide-page" :class="cx1" @click="slideTo(2)">B</div>
+      <div id="C" class="h5-slide-page" :class="cx2" @click="slideTo(1)">C</div>
+    </div>
+  </div>
+
+  <script>
+  new Vue({
+    el: '.js-app',
+
+    data: {
+      current: 0,
+    },
+
+    computed: {
+      cx0: function () {
+        if (0 === this.current) {
+          return 'h5-slide-current';
+        }
+
+        if (0 < this.current) {
+          return 'h5-slide-prev';
+        }
+
+        if (0 > this.current) {
+          return 'h5-slide-next';
+        }
+      },
+
+      cx1: function () {
+        if (1 === this.current) {
+          return 'h5-slide-current';
+        }
+
+        if (1 < this.current) {
+          return 'h5-slide-prev';
+        }
+
+        if (1 > this.current) {
+          return 'h5-slide-next';
+        }
+      },
+
+      cx2: function () {
+        if (2 === this.current) {
+          return 'h5-slide-current';
+        }
+
+        if (2 < this.current) {
+          return 'h5-slide-prev';
+        }
+
+        if (2 > this.current) {
+          return 'h5-slide-next';
+        }
+      },
+    },
+
+    methods: {
+      slideTo: function (page) {
+        this.current = page;
+      },
+    },
+  });
+  </script>
+</body>
+</html>
