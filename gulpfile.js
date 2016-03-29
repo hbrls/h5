@@ -1,9 +1,13 @@
+var pump = require('pump');
 var gulp = require('gulp');
 var pkg = require('./package.json');
+var merge = require('merge-stream');
+var addsrc = require('gulp-add-src');
 var shell = require('gulp-shell');
-var sass = require('gulp-ruby-sass');
-var cssshrink = require('gulp-cssshrink');
-var minifyCSS = require('gulp-minify-css');
+var sass = require('gulp-sass');
+var cssnano = require('gulp-cssnano');
+var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 
 
@@ -13,7 +17,7 @@ gulp.task('libs', shell.task([
   'cp node_modules/vue/dist/vue.min.js ./libs',
   'cp node_modules/vue-resource/dist/vue-resource.min.js ./libs',
   'cp node_modules/director/build/director.min.js ./libs && echo ";" >> ./libs/director.min.js',
-  'wget https://raw.githubusercontent.com/hbrls/bootstrap/xs/dist/css/bootstrap.xs.0.0.2.min.css -P ./libs',
+  'wget https://raw.githubusercontent.com/nice-fungal/bootstrap/xs/dist/css/bootstrap-xs-803aefc053.css -P ./libs',
   'wget https://raw.githubusercontent.com/hbrls/headjs/v2/dist/2.0/head.core.min.js -P ./libs',
 ]));
 
@@ -24,16 +28,14 @@ gulp.task('js', shell.task([
 ]));
 
 
-gulp.task('css', function () {
-  return sass('./sass/h5.min.scss', {
-      style: 'expanded',
-      stopOnError: true,
-      noCache: true
-    })
-    .on('error', function (err) { console.log(err.message); })
-    .pipe(cssshrink())
-    .pipe(minifyCSS({ keepSpecialComments: false }))
-    .pipe(gulp.dest('dist/'));
+gulp.task('css', function (done) {
+  return gulp
+    .src('./sass/h5.scss')
+    .pipe(sass())
+    .pipe(cssnano({ autoprefixer: { add: true }}))
+    .pipe(addsrc.prepend('./libs/bootstrap-xs-803aefc053.css'))
+    .pipe(concat('h5.min.css'))
+    .pipe(gulp.dest('./dist'));
 });
 
 
